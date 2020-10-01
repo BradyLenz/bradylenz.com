@@ -6,6 +6,9 @@ let themeBase = createMuiTheme({
         primary: {
             main: '#039be5',
         },
+        secondary: {
+            main: "#e64a19",
+        }
     },
     typography: {
         h1: {

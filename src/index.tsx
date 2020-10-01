@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { CssBaseline, ThemeProvider } from '@material-ui/core';
+
 import App from './app';
 import * as serviceWorker from './serviceWorker';
-import { CssBaseline, ThemeProvider } from '@material-ui/core';
 import { theme } from './theme';
 import './index.css';
 

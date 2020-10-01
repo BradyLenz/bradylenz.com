@@ -1,6 +1,7 @@
 import React from 'react';
-import {LandingSection} from './components';
-import { ScrollFab } from './components/shared/components'
+
+import { LandingSection } from './components';
+import { ScrollFab } from './components'
 
 function App() {
     return (

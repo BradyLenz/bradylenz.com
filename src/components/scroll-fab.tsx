@@ -25,7 +25,7 @@ export const ScrollFab: React.FC<Props> = (props: Props) => {
     const classes = useStyles(props);
 
     return (
-        <Fab color='primary' className={classes.root} size='large'>
+        <Fab color='secondary' className={classes.root} size='large'>
             {props.direction === 'up'
                 ? <KeyboardArrowUp />
                 : <KeyboardArrowDown />
