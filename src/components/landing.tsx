@@ -4,16 +4,17 @@ import { DescriptionOutlined } from '@material-ui/icons';
 
 import { GitHubIcon } from './icons';
 import { globals, landingSectionData } from '../data';
-import { useStyles as useSectionStyles } from './styles';
-import { withScrolling } from './hocs';
+import { withScrolling } from './shared/hocs';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
-            position: 'relative',
-            top: '20%',
+            minHeight: '100vh',
+        },
+        contentContainer: {
+            paddingTop: '20vh',
             [theme.breakpoints.down('sm')]: {
-                top: '15%',
+                paddingTop: '15vh',
             },
         },
         buttonContainer: {
@@ -31,15 +32,15 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const LandingSectionBase: React.FC = () => {
-    const sectionClasses = useSectionStyles();
     const classes = useStyles();
 
     return (
-        <Container maxWidth='lg' className={sectionClasses.section}>
-            <div className={classes.root}>
+        <Container maxWidth='lg' className={classes.root}>
+            <div className={classes.contentContainer}>
                 <Typography
                     variant='h3'
                     align='center'
+                    color='textSecondary'
                     gutterBottom
                 >
                     {landingSectionData.greeting}
@@ -55,7 +56,6 @@ const LandingSectionBase: React.FC = () => {
                 <Typography
                     variant='h2'
                     align='center'
-                    color='textSecondary'
                     gutterBottom
                 >
                     {landingSectionData.message}

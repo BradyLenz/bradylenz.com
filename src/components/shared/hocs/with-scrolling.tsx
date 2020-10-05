@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { createStyles, makeStyles } from '@material-ui/core';
 
-import { ScrollFab } from '../scroll-fab';
+import { ScrollFab, Props as ScrollFabProps } from '../scroll-fab';
 
 const useStyles = makeStyles(() =>
     createStyles({
@@ -11,8 +11,10 @@ const useStyles = makeStyles(() =>
     })
 );
 
-export const withScrolling = <T extends {}>(Component: React.FC<T>) => {
-    return (props: T) => {
+type Props = Pick<ScrollFabProps, 'hideScrollFabSmDown'>;
+
+export const withScrolling = <T extends {}>(Component: React.FC<T & Props>) => {
+    return (props: T & Props) => {
         const classes = useStyles();
         const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -25,7 +27,7 @@ export const withScrolling = <T extends {}>(Component: React.FC<T>) => {
         return (
             <div className={classes.root}>
                 <Component {...props}/>
-                <ScrollFab direction='down' onClick={onScrollDownClick} />
+                <ScrollFab direction='down' onClick={onScrollDownClick} hideScrollFabSmDown={props.hideScrollFabSmDown} />
                 <div ref={scrollRef} />
             </div>
         );

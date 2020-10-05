@@ -11,6 +11,10 @@ let themeBase = createMuiTheme({
         },
         background: {
             default: '#161616',
+        },
+        text: {
+            primary: 'rgba(255, 255, 255, 0.7)',
+            secondary: '#fff',
         }
     },
     typography: {

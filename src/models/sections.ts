@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { Image } from './elements';
 
 interface Section {
     header: string;
@@ -10,7 +10,8 @@ export interface LandingSection {
 }
 
 export interface AboutMeSection extends Section {
-    paragraphs: (string | ReactElement)[];
+    paragraphs: string[];
+    portrait: Image;
 }
 
 export interface EducationSection extends Section {

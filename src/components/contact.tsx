@@ -1,17 +1,32 @@
 import React from 'react';
-import { Container, Typography } from '@material-ui/core';
+import { Container, createStyles, makeStyles, Theme, Typography } from '@material-ui/core';
 
 import { contactData } from '../data';
-import { useStyles as useSectionStyles } from './styles';
+
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        root: {
+            minHeight: '100vh',
+        },
+        contentContainer: {
+            paddingTop: '20vh',
+            [theme.breakpoints.down('sm')]: {
+                paddingTop: '10vh',
+            },
+        },
+    })
+);
 
 export const ContactSection: React.FC = () => {
-    const sectionClasses = useSectionStyles();
+    const classes = useStyles();
 
     return (
-        <Container maxWidth='lg' className={sectionClasses.section}>
-            <Typography variant='h3' align='center' color='primary'>
-                {contactData.header}
-            </Typography>
+        <Container maxWidth='lg' className={classes.root}>
+            <div className={classes.contentContainer}>
+                <Typography variant='h3' align='center' color='primary'>
+                    {contactData.header}
+                </Typography>
+            </div>
         </Container>
     )
 }

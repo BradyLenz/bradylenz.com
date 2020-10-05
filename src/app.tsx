@@ -12,9 +12,9 @@ function App() {
     return (
         <>
             <LandingSection />
-            <AboutSection />
-            <EducationSection />
-            <WorkSection />
+            <AboutSection hideScrollFabSmDown />
+            <EducationSection hideScrollFabSmDown />
+            <WorkSection  hideScrollFabSmDown />
             <ContactSection />
         </>
     );
