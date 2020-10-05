@@ -4,12 +4,13 @@ import { KeyboardArrowDown, KeyboardArrowUp } from '@material-ui/icons';
 
 interface Props {
     direction: 'up' | 'down',
+    onClick: () => void;
 }
 
 const useStyles = makeStyles(() =>
     createStyles({
         root: (props: Props) => ({
-            position: 'fixed',
+            position: 'absolute',
             left: 0,
             right: 0,
             marginLeft: 'auto',
@@ -24,8 +25,17 @@ const useStyles = makeStyles(() =>
 export const ScrollFab: React.FC<Props> = (props: Props) => {
     const classes = useStyles(props);
 
+    const onClick = () => {
+        props.onClick();
+    }
+
     return (
-        <Fab color='secondary' className={classes.root} size='large'>
+        <Fab
+            color='secondary'
+            className={classes.root}
+            size='large'
+            onClick={onClick}
+        >
             {props.direction === 'up'
                 ? <KeyboardArrowUp />
                 : <KeyboardArrowDown />

@@ -8,11 +8,17 @@ let themeBase = createMuiTheme({
         },
         secondary: {
             main: "#e64a19",
+        },
+        background: {
+            default: '#161616',
         }
     },
     typography: {
         h1: {
             fontWeight: 500,
+        },
+        h2: {
+            fontWeight: 400,
         },
     },
 });
