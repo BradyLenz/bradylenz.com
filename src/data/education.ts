@@ -1,5 +1,5 @@
 import { EducationSection } from "../models";
 
 export const educationData: EducationSection = {
-    header: 'Education',
+    header: 'Where I\'ve studied',
 }

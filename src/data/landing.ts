@@ -1,6 +1,6 @@
 import { LandingSection } from "../models";
 
-export const landingPageData: LandingSection  = {
+export const landingSectionData: LandingSection  = {
     greeting: 'Hey, my name is',
-    message: 'I am a full stack software engineer',
+    message: 'I am a full-stack software engineer.',
 }

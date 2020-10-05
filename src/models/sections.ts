@@ -1,3 +1,5 @@
+import { ReactElement } from 'react';
+
 interface Section {
     header: string;
 }
@@ -8,7 +10,7 @@ export interface LandingSection {
 }
 
 export interface AboutMeSection extends Section {
-
+    paragraphs: (string | ReactElement)[];
 }
 
 export interface EducationSection extends Section {

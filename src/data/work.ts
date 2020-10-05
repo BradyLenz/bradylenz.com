@@ -1,5 +1,5 @@
 import { WorkSection } from "../models";
 
 export const workData: WorkSection = {
-    header: 'Some places I\'ve  worked',
+    header: 'Places I\'ve  worked',
 }

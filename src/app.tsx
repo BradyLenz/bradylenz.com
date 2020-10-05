@@ -1,13 +1,21 @@
 import React from 'react';
 
-import { LandingSection } from './components';
-import { ScrollFab } from './components'
+import {
+    AboutSection, 
+    LandingSection,
+    EducationSection,
+    WorkSection,
+    ContactSection,
+} from './components';
 
 function App() {
     return (
         <>
             <LandingSection />
-            <ScrollFab direction='down' />
+            <AboutSection />
+            <EducationSection />
+            <WorkSection />
+            <ContactSection />
         </>
     );
 }
