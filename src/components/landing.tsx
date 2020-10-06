@@ -1,8 +1,7 @@
 import React from 'react';
 import { Button, Container, createStyles, makeStyles, Theme, Typography } from "@material-ui/core"
-import { DescriptionOutlined } from '@material-ui/icons';
+import { DescriptionOutlined, GitHub } from '@material-ui/icons';
 
-import { GitHubIcon } from './icons';
 import { globals, landingSectionData } from '../data';
 import { withScrolling } from './shared/hocs';
 
@@ -79,7 +78,7 @@ const LandingSectionBase: React.FC = () => {
                         size='large'
                         className={classes.button}
                     >
-                        <GitHubIcon className={classes.gitHubIcon} />
+                        <GitHub className={classes.gitHubIcon} />
                         Github
                     </Button>
                 </div>

@@ -23,5 +23,5 @@ export interface WorkSection extends Section {
 }
 
 export interface ContactSection extends Section {
-
+    message: string;
 }
