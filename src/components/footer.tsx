@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStyles, Grid, IconButton, Link, makeStyles, Typography } from '@material-ui/core';
-import { GitHub, LinkedIn } from '@material-ui/icons';
+import { DescriptionOutlined, GitHub, LinkedIn, MailOutline } from '@material-ui/icons';
 
 import { globals } from '../data';
 
@@ -41,10 +41,12 @@ export const Footer: React.FC = () => {
             >
                 <Grid item>
                     <div className={classes.iconContainer}>
-                        <IconButton
-                            size='small'
-                            color='primary'
-                        >
+                        <IconButton size='small' color='primary'>
+                            <Link>
+                                <DescriptionOutlined />
+                            </Link>
+                        </IconButton>
+                        <IconButton size='small' color='primary'>
                             <Link
                                 href={globals.githubUrl}
                                 target='_blank'
@@ -53,10 +55,7 @@ export const Footer: React.FC = () => {
                                 <GitHub />
                             </Link>
                         </IconButton>
-                        <IconButton
-                            size='small'
-                            color='primary'
-                        >
+                        <IconButton size='small' color='primary'>
                             <Link
                                 href={globals.linkedinUrl}
                                 target='_blank'
@@ -65,12 +64,17 @@ export const Footer: React.FC = () => {
                                 <LinkedIn />
                             </Link>
                         </IconButton>
+                        <IconButton size='small' color='primary'>
+                            <Link href={`mailto:${globals.email}`}>
+                                <MailOutline />
+                            </Link>
+                        </IconButton>
                     </div>
                     <Typography
                         variant='body1'
                         className={classes.textLeft}
                     >
-                        Built by:
+                        Built by
                     </Typography>
                     <Typography
                         variant='body1'

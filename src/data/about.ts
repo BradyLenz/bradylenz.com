@@ -20,7 +20,7 @@ automated physician scheduling platform.
 `,
 `
 In addition to my work at QGenda, I am currently a graduate student at the Georgia Institute of Technology, where I study computer science,
-specializing in computer systems.
+specializing in computing systems.
 `
     ]
 }

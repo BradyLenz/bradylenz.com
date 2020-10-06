@@ -1,11 +1,38 @@
 import React from 'react';
-import { Container, Typography } from '@material-ui/core';
+import { Container, createStyles, Grid, Link, makeStyles, Theme, Typography } from '@material-ui/core';
 
 import { educationData } from '../data';
 import { withScrolling } from './shared/hocs';
 import { useStyles as useSharedStyles } from './shared/styles';
 
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        logo: {
+            width: '100%',
+            filter: 'grayscale(100%)',
+            transitionDuration: '500ms',
+            '&:hover': {
+                filter: 'grayscale(0%)',
+            },
+        },
+        universityRow: {
+            padding: '50px 0'
+        },
+        contentContainer: {
+            paddingLeft: '50px',
+            width: '100%',
+            [theme.breakpoints.down('sm')]: {
+                paddingLeft: '0',
+            },
+        },
+        hr: {
+            borderColor: theme.palette.secondary.main,
+        }
+    })
+);
+
 const EducationSectionBase: React.FC = () => {
+    const classes = useStyles();
     const sharedClasses = useSharedStyles();
 
     return (
@@ -19,6 +46,52 @@ const EducationSectionBase: React.FC = () => {
                 >
                     {educationData.header}
                 </Typography>
+                {educationData.universities.map((university, idx) => (
+                    <Grid
+                        container
+                        key={idx}
+                        alignItems='center'
+                        className={classes.universityRow}
+                    >
+                        <Grid item xs={12} md={5} lg={6}>
+                            <img
+                                src={university.image.src}
+                                alt={university.image.alt}
+                                className={classes.logo}
+                            />
+                        </Grid>
+                        <Grid
+                            item 
+                            xs={12}
+                            md={7}
+                            lg={6}
+                            className={classes.contentContainer}
+                        >
+                            <Typography
+                                component={Link}
+                                href={university.url}
+                                target='_blank'
+                                rel='noopener'
+                                variant='h4'
+                                color='secondary'
+                                gutterBottom
+                            >
+                                {university.name}
+                            </Typography>
+                            <Typography variant='h6' color='textPrimary'>
+                                {university.degreeText}
+                            </Typography>
+                            <Typography variant='h6' color='textPrimary'>
+                                {university.duration}
+                            </Typography>
+                            {university.specialization &&
+                                <Typography variant='h6' color='textPrimary'>
+                                    Specializing in {university.specialization}
+                                </Typography>
+                            }
+                        </Grid>
+                    </Grid>
+                ))}
             </div>
         </Container>
     )

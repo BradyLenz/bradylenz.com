@@ -14,8 +14,17 @@ export interface AboutMeSection extends Section {
     portrait: Image;
 }
 
-export interface EducationSection extends Section {
+interface University {
+    image: Image;
+    url: string;
+    name: string;
+    duration: string;
+    degreeText: string;
+    specialization?: string;
+}
 
+export interface EducationSection extends Section {
+    universities: University[];
 }
 
 export interface WorkSection extends Section {
