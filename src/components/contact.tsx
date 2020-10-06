@@ -7,7 +7,7 @@ import { contactData, globals } from '../data';
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
-            minHeight: '100vh',
+            height: 'calc(100vh - 128px)',
         },
         contentContainer: {
             paddingTop: '20vh',

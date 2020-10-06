@@ -3,4 +3,5 @@ export interface Globals {
     linkedinUrl: string;
     githubUrl: string;
     email: string;
+    url: string;
 }

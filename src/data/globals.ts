@@ -5,4 +5,5 @@ export const globals: Globals = {
     linkedinUrl: 'https://www.linkedin.com/in/brlenz/',
     githubUrl: 'https://github.com/BradyLenz',
     email: 'bradylenz98@gmail.com',
+    url: 'https://bradylenz.com',
 }

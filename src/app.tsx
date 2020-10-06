@@ -6,6 +6,7 @@ import {
     EducationSection,
     WorkSection,
     ContactSection,
+    Footer,
 } from './components';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
             <EducationSection hideScrollFabSmDown />
             <WorkSection  hideScrollFabSmDown />
             <ContactSection />
+            <Footer />
         </>
     );
 }
