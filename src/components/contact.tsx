@@ -3,17 +3,12 @@ import { Button, Container, createStyles, makeStyles, Theme, Typography } from '
 import { LinkedIn, MailOutline } from '@material-ui/icons';
 
 import { contactData, globals } from '../data';
+import { useStyles as useSharedStyles } from './shared/styles';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
             height: 'calc(100vh - 128px)',
-        },
-        contentContainer: {
-            paddingTop: '20vh',
-            [theme.breakpoints.down('sm')]: {
-                paddingTop: '10vh',
-            },
         },
         marginBottom: {
             marginBottom: '50px',
@@ -31,15 +26,16 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const ContactSection: React.FC = () => {
     const classes = useStyles();
+    const sharedClasses = useSharedStyles();
 
     return (
         <Container maxWidth='sm' className={classes.root}>
-            <div className={classes.contentContainer}>
+            <div className={sharedClasses.contentContainer}>
                 <Typography
                     variant='h3'
                     align='center'
                     color='primary'
-                    className={classes.marginBottom}
+                    className={`${classes.marginBottom} ${sharedClasses.hr}`}
                 >
                     {contactData.header}
                 </Typography>

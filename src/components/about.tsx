@@ -3,18 +3,10 @@ import { Container, createStyles, Grid, makeStyles, Theme, Typography } from '@m
 
 import { aboutMeData } from '../data';
 import { withScrolling } from './shared/hocs';
+import { useStyles as useSharedStyles } from './shared/styles';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        root: {
-            minHeight: '100vh',
-        },
-        contentContainer: {
-            paddingTop: '20vh',
-            [theme.breakpoints.down('sm')]: {
-                paddingTop: '10vh',
-            },
-        },
         header: {
             marginBottom: '50px',
             [theme.breakpoints.down('sm')]: {
@@ -42,16 +34,17 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const AboutSectionBase: React.FC = () => {
     const classes = useStyles();
+    const sharedClasses = useSharedStyles();
 
     return (
-        <Container maxWidth='md' className={classes.root}>
-            <div className={classes.contentContainer}>
+        <Container maxWidth='md' className={sharedClasses.section}>
+            <div className={sharedClasses.contentContainer}>
                 <Typography
                     variant='h3'
                     align='center'
                     color='primary'
                     gutterBottom
-                    className={classes.header}
+                    className={`${classes.header} ${sharedClasses.hr}`}
                 >
                     {aboutMeData.header}
                 </Typography>
