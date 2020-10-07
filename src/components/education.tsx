@@ -88,14 +88,14 @@ const EducationSectionBase: React.FC = () => {
                                 >
                                     {university.name}
                                 </Typography>
-                                <Typography variant='h6' color='textPrimary'>
+                                <Typography variant='h6'>
                                     {university.degreeText}
                                 </Typography>
-                                <Typography variant='h6' color='textPrimary'>
+                                <Typography variant='h6'>
                                     {university.duration}
                                 </Typography>
                                 {university.specialization &&
-                                    <Typography variant='h6' color='textPrimary'>
+                                    <Typography variant='h6'>
                                         Specializing in {university.specialization}
                                     </Typography>
                                 }

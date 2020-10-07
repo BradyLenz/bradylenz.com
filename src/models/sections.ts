@@ -27,8 +27,21 @@ export interface EducationSection extends Section {
     universities: University[];
 }
 
-export interface WorkSection extends Section {
+interface Job {
+    company: string;
+    url: string;
+    title: string;
+    duration: string;
+    isCurrent: boolean;
+    location: string;
+    logo: Image;
+    descriptors: string[];
+    skills: string[];
+    abbreviation?: string;
+}
 
+export interface WorkSection extends Section {
+    jobs: Job[];
 }
 
 export interface ContactSection extends Section {
