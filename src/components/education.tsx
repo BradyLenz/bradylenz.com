@@ -7,6 +7,23 @@ import { useStyles as useSharedStyles } from './shared/styles';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
+        rowContainer: {
+            padding: '50px 0 0 0'
+        },
+        header: {
+            marginBottom: '50px',
+            [theme.breakpoints.down('sm')]: {
+                marginBottom: '10px',
+            },
+        },
+        contentContainer: {
+            paddingLeft: '50px',
+            width: '100%',
+            [theme.breakpoints.down('sm')]: {
+                paddingLeft: '0',
+                textAlign: 'center',
+            },
+        },
         logo: {
             width: '100%',
             filter: 'grayscale(100%)',
@@ -15,19 +32,6 @@ const useStyles = makeStyles((theme: Theme) =>
                 filter: 'grayscale(0%)',
             },
         },
-        universityRow: {
-            padding: '50px 0'
-        },
-        contentContainer: {
-            paddingLeft: '50px',
-            width: '100%',
-            [theme.breakpoints.down('sm')]: {
-                paddingLeft: '0',
-            },
-        },
-        hr: {
-            borderColor: theme.palette.secondary.main,
-        }
     })
 );
 
@@ -42,56 +46,63 @@ const EducationSectionBase: React.FC = () => {
                     variant='h3'
                     align='center'
                     color='primary'
-                    className={sharedClasses.hr}
+                    className={`${sharedClasses.hr} ${classes.header}`}
                 >
                     {educationData.header}
                 </Typography>
-                {educationData.universities.map((university, idx) => (
-                    <Grid
-                        container
-                        key={idx}
-                        alignItems='center'
-                        className={classes.universityRow}
-                    >
-                        <Grid item xs={12} md={5} lg={6}>
-                            <img
-                                src={university.image.src}
-                                alt={university.image.alt}
-                                className={classes.logo}
-                            />
-                        </Grid>
+                {educationData.universities.map((university, idx) => {
+                    const style: React.CSSProperties = idx > 0 ? { paddingTop: '100px' } : {}
+
+                    return (
                         <Grid
-                            item 
-                            xs={12}
-                            md={7}
-                            lg={6}
-                            className={classes.contentContainer}
+                            container
+                            key={idx}
+                            alignItems='center'
+                            alignContent='center'
+                            justify='center'
+                            className={classes.rowContainer}
+                            style={style}
                         >
-                            <Typography
-                                component={Link}
-                                href={university.url}
-                                target='_blank'
-                                rel='noopener'
-                                variant='h4'
-                                color='secondary'
-                                gutterBottom
+                            <Grid item xs={8} md={5} lg={6}>
+                                <img
+                                    src={university.image.src}
+                                    alt={university.image.alt}
+                                    className={classes.logo}
+                                />
+                            </Grid>
+                            <Grid
+                                item
+                                xs={12}
+                                md={7}
+                                lg={6}
+                                className={classes.contentContainer}
                             >
-                                {university.name}
-                            </Typography>
-                            <Typography variant='h6' color='textPrimary'>
-                                {university.degreeText}
-                            </Typography>
-                            <Typography variant='h6' color='textPrimary'>
-                                {university.duration}
-                            </Typography>
-                            {university.specialization &&
-                                <Typography variant='h6' color='textPrimary'>
-                                    Specializing in {university.specialization}
+                                <Typography
+                                    component={Link}
+                                    href={university.url}
+                                    target='_blank'
+                                    rel='noopener'
+                                    variant='h4'
+                                    color='secondary'
+                                    gutterBottom
+                                >
+                                    {university.name}
                                 </Typography>
-                            }
+                                <Typography variant='h6' color='textPrimary'>
+                                    {university.degreeText}
+                                </Typography>
+                                <Typography variant='h6' color='textPrimary'>
+                                    {university.duration}
+                                </Typography>
+                                {university.specialization &&
+                                    <Typography variant='h6' color='textPrimary'>
+                                        Specializing in {university.specialization}
+                                    </Typography>
+                                }
+                            </Grid>
                         </Grid>
-                    </Grid>
-                ))}
+                        );
+                })}
             </div>
         </Container>
     )

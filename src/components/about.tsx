@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme: Theme) =>
         paragraph: {
             margin: '1em 0',
         },
-        portraitContainer: {
+        portraitContainer: { 
             textAlign: 'center',
         },
         portrait: {
@@ -48,12 +48,7 @@ const AboutSectionBase: React.FC = () => {
                 >
                     {aboutMeData.header}
                 </Typography>
-                <Grid
-                    container
-                    alignItems='center'
-                    alignContent='center'
-                    spacing={2}
-                >
+                <Grid container spacing={2}>
                     <Grid item xs={12} md={8}>
                         {aboutMeData.paragraphs.map((paragraph, idx) => (
                             <Typography
