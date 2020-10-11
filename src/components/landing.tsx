@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Container, createStyles, makeStyles, Theme, Typography } from "@material-ui/core"
 import { DescriptionOutlined, GitHub } from '@material-ui/icons';
 
@@ -32,9 +32,20 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const LandingSectionBase: React.FC = () => {
     const classes = useStyles();
+    const [visible, setVisible] = useState(false);
+
+    setTimeout(() => {
+        if (!visible) {
+            setVisible(true);
+        }
+    }, 500);
+
+    const containerStyle: React.CSSProperties = visible
+        ? { opacity: 1, transitionDuration: "500ms" }
+        : { opacity: 0 }
 
     return (
-        <Container maxWidth='lg' className={classes.root}>
+        <Container maxWidth='lg' className={classes.root} style={containerStyle}>
             <div className={classes.contentContainer}>
                 <Typography
                     variant='h3'
