@@ -6,7 +6,7 @@ export const useStyles = makeStyles((theme: Theme) =>
             minHeight: '100vh',
         },
         contentContainer: {
-            paddingTop: '20vh',
+            paddingTop: '10vh',
             [theme.breakpoints.down('sm')]: {
                 paddingTop: '5vh',
             },

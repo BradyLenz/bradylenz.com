@@ -24,8 +24,15 @@ const useStyles = makeStyles((theme: Theme) =>
                 textAlign: 'center',
             },
         },
+        logoContainer: {
+            textAlign: 'right',
+            [theme.breakpoints.down('sm')]: {
+                textAlign: 'center',
+            },
+        },
         logo: {
             width: '100%',
+            maxWidth: '400px',
             filter: 'grayscale(100%)',
             transitionDuration: '500ms',
             '&:hover': {
@@ -63,7 +70,13 @@ const EducationSectionBase: React.FC = () => {
                             className={classes.rowContainer}
                             style={style}
                         >
-                            <Grid item xs={8} md={5} lg={6}>
+                            <Grid
+                                item
+                                xs={8}
+                                md={5}
+                                lg={6}
+                                className={classes.logoContainer}
+                            >
                                 <img
                                     src={university.image.src}
                                     alt={university.image.alt}

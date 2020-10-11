@@ -17,7 +17,7 @@ const useStyles = makeStyles(() =>
             marginLeft: 'auto',
             marginRight: 'auto',
             bottom: (props.direction === 'down') ? '10vh' : undefined,
-            top: (props.direction === 'up') ? '10' : undefined,
+            top: (props.direction === 'up') ? '10vh' : undefined,
         })
     })
 );

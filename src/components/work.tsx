@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Container, createStyles, Link, makeStyles, Tab, Tabs, Theme, Typography } from '@material-ui/core';
+import { Container, createStyles, Link, makeStyles, Tab, Tabs, Theme, Typography, Hidden, Chip } from '@material-ui/core';
 
 import { workData } from '../data';
 import { withScrolling } from './shared/hocs';
 import { useStyles as useSharedStyles } from './shared/styles';
+import { KeyboardArrowRight } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -13,17 +14,44 @@ const useStyles = makeStyles((theme: Theme) =>
                 marginBottom: '10px',
             },
         },
-        contentContainer: {
+        jobHeader: {
             paddingTop: '50px',
+            display: 'flex',
+            flexDirection: 'column',
+            flexWrap: 'wrap',
+            alignItems: 'center',
         },
-        logo: {
-            width: '100%',
-            filter: 'grayscale(100%)',
-            transitionDuration: '500ms',
-            '&:hover': {
-                filter: 'grayscale(0%)',
-            },
+        jobTextContainer: {
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'center'
         },
+        centeredContentContainer: {
+            paddingTop: '25px',
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: 'column',
+        },
+        descriptorContainer: {
+            maxWidth: '600px',
+            display: 'flex',
+            alignItems: 'center',
+        },
+        desciptor: {
+            display: 'inline-block',
+            verticalAlign: 'center',
+        },
+        chipContainer: {
+            marginTop: '25px',
+            padding: '8px 0',
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: 'column',
+        },
+        chip: {
+            margin: '4px',
+        }
     })
 );
 
@@ -58,26 +86,71 @@ const WorkSectionBase: React.FC = () => {
                     ))}
                 </Tabs>
                 {workData.jobs.map((job, idx) => (
-                    <div key={idx} hidden={tabValue !== idx} className={classes.contentContainer}>
-                        <Typography
-                            component={Link}
-                            href={job.url}
-                            target='_blank'
-                            rel='noopener'
-                            variant='h3'
-                            color='primary'
-                        >
-                            {job.company}
-                        </Typography>
-                        <Typography variant='h4'>
-                            {job.title}
-                        </Typography>
-                        <Typography variant='h6'>
-                            {job.duration}
-                        </Typography>
-                        <Typography variant='h6'>
-                            {job.location}
-                        </Typography>
+                    <div key={idx} hidden={tabValue !== idx}>
+                        <div className={classes.jobHeader}>
+                            <div className={classes.jobTextContainer}>
+                                <Hidden xsDown>
+                                    <Typography variant={'h3'} color='textPrimary'>
+                                        {job.title}{',\u00A0'}
+                                    </Typography>
+                                    <Typography
+                                        component={Link}
+                                        href={job.url}
+                                        target='_blank'
+                                        rel='noopener'
+                                        variant={'h3'}
+                                        color='primary'
+                                    >
+                                        {job.company}
+                                    </Typography>
+                                </Hidden>
+                                <Hidden smUp>
+                                    <Typography variant={'h4'} color='textPrimary'>
+                                        {job.title}{',\u00A0'}
+                                    </Typography>
+                                    <Typography
+                                        component={Link}
+                                        href={job.url}
+                                        target='_blank'
+                                        rel='noopener'
+                                        variant={'h4'}
+                                        color='primary'
+                                    >
+                                        {job.company}
+                                    </Typography>
+                                </Hidden>
+                            </div>
+                            <Typography variant='h6'>
+                                {job.duration}
+                            </Typography>
+                            <Typography variant='h6'>
+                                {job.location}
+                            </Typography>
+                        </div>
+                        <div className={classes.centeredContentContainer}>
+                            <div>
+                                {job.descriptors.map((descriptor) => (
+                                    <div key={descriptor} className={classes.descriptorContainer}>
+                                        <KeyboardArrowRight color='secondary'/>
+                                        <Typography>
+                                            {descriptor}
+                                        </Typography>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        <div className={classes.chipContainer}>
+                            <div>
+                                {job.skills.map((skill) => (
+                                    <Chip
+                                        key={skill}
+                                        label={skill}
+                                        color='secondary'
+                                        className={classes.chip}
+                                    />
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 ))}
             </div>
