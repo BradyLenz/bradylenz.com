@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Container, createStyles, makeStyles, Theme, Typography } from "@material-ui/core"
 import { DescriptionOutlined, GitHub } from '@material-ui/icons';
 
 import { globals, landingSectionData } from '../data';
-import { withScrolling } from './shared/hocs';
+import { withFade, withScrolling } from './shared/hocs';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -32,20 +32,9 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const LandingSectionBase: React.FC = () => {
     const classes = useStyles();
-    const [visible, setVisible] = useState(false);
-
-    setTimeout(() => {
-        if (!visible) {
-            setVisible(true);
-        }
-    }, 500);
-
-    const containerStyle: React.CSSProperties = visible
-        ? { opacity: 1, transitionDuration: "500ms" }
-        : { opacity: 0 }
 
     return (
-        <Container maxWidth='lg' className={classes.root} style={containerStyle}>
+        <Container maxWidth='lg' className={classes.root}>
             <div className={classes.contentContainer}>
                 <Typography
                     variant='h3'
@@ -98,4 +87,4 @@ const LandingSectionBase: React.FC = () => {
     )
 }
 
-export const LandingSection = withScrolling(LandingSectionBase);
+export const LandingSection = withFade(withScrolling(LandingSectionBase));

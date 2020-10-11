@@ -12,7 +12,7 @@ import {
 function App() {
     return (
         <>
-            <LandingSection />
+            <LandingSection scrollOffset={0} />
             <AboutSection hideScrollFabSmDown />
             <EducationSection hideScrollFabSmDown />
             <WorkSection  hideScrollFabSmDown />

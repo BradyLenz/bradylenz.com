@@ -4,6 +4,7 @@ import { LinkedIn, MailOutline } from '@material-ui/icons';
 
 import { contactData, globals } from '../data';
 import { useStyles as useSharedStyles } from './shared/styles';
+import { withFade } from './shared';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 );
 
-export const ContactSection: React.FC = () => {
+const ContactSectionBase: React.FC = () => {
     const classes = useStyles();
     const sharedClasses = useSharedStyles();
 
@@ -74,3 +75,5 @@ export const ContactSection: React.FC = () => {
         </Container>
     )
 }
+
+export const ContactSection = withFade(ContactSectionBase);

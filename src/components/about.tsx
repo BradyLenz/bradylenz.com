@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, createStyles, Grid, makeStyles, Theme, Typography } from '@material-ui/core';
 
 import { aboutMeData } from '../data';
-import { withScrolling } from './shared/hocs';
+import { withFade, withScrolling } from './shared/hocs';
 import { useStyles as useSharedStyles } from './shared/styles';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -78,4 +78,4 @@ const AboutSectionBase: React.FC = () => {
     )
 }
 
-export const AboutSection = withScrolling(AboutSectionBase);
+export const AboutSection = withFade(withScrolling(AboutSectionBase));

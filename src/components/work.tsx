@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Container, createStyles, Link, makeStyles, Tab, Tabs, Theme, Typography, Hidden, Chip } from '@material-ui/core';
 
 import { workData } from '../data';
-import { withScrolling } from './shared/hocs';
+import { withFade, withScrolling } from './shared/hocs';
 import { useStyles as useSharedStyles } from './shared/styles';
 import { KeyboardArrowRight } from '@material-ui/icons';
 
@@ -158,4 +158,4 @@ const WorkSectionBase: React.FC = () => {
     )
 }
 
-export const WorkSection = withScrolling(WorkSectionBase);
+export const WorkSection = withFade(withScrolling(WorkSectionBase));
