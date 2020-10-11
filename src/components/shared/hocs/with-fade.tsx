@@ -9,7 +9,6 @@ interface Props {
 export const withFade = <T extends {}>(Component: React.FC<T & Props>) => {
     return (props: T & Props) => {
         const offset = props.scrollOffset ?? 200;
-        console.log(offset);
         const currentElement = useRef<HTMLDivElement>(null)
         const [visible, setVisible] = useState(false);
         const containerStyle: React.CSSProperties = visible
