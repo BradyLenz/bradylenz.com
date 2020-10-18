@@ -6,4 +6,5 @@ export const globals: Globals = {
     githubUrl: 'https://github.com/BradyLenz',
     email: 'bradylenz98@gmail.com',
     url: 'https://bradylenz.com',
+    resume: 'resume.pdf',
 }

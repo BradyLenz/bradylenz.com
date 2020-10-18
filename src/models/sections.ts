@@ -34,7 +34,6 @@ interface Job {
     duration: string;
     isCurrent: boolean;
     location: string;
-    logo: Image;
     descriptors: string[];
     skills: string[];
     abbreviation?: string;

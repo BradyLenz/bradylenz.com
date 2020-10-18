@@ -4,4 +4,5 @@ export interface Globals {
     githubUrl: string;
     email: string;
     url: string;
+    resume: string;
 }
