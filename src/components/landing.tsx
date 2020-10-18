@@ -60,7 +60,10 @@ const LandingSectionBase: React.FC = () => {
                     {landingSectionData.message}
                 </Typography>
                 <div className={classes.buttonContainer}>
-                    <Button 
+                    <Button
+                        href={globals.resume}
+                        target='_blank'
+                        rel='noopener'
                         variant='contained'
                         color='primary'
                         size='large'

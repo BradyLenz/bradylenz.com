@@ -38,6 +38,9 @@ const useStyles = makeStyles((theme: Theme) =>
             display: 'flex',
             alignItems: 'center',
         },
+        descriptorArrow: {
+            alignSelf: 'start',
+        },
         desciptor: {
             display: 'inline-block',
             verticalAlign: 'center',
@@ -48,12 +51,17 @@ const useStyles = makeStyles((theme: Theme) =>
             display: 'flex',
             alignItems: 'center',
             flexDirection: 'column',
+            textAlign: 'center',
         },
         chip: {
             margin: '4px',
         }
     })
 );
+
+const randomSort = (a: any, b: any) => {
+    return 0.5 - Math.random();
+}
 
 const WorkSectionBase: React.FC = () => {
     const sharedClasses = useSharedStyles();
@@ -131,7 +139,7 @@ const WorkSectionBase: React.FC = () => {
                             <div>
                                 {job.descriptors.map((descriptor) => (
                                     <div key={descriptor} className={classes.descriptorContainer}>
-                                        <KeyboardArrowRight color='secondary'/>
+                                        <KeyboardArrowRight color='primary' className={classes.descriptorArrow} />
                                         <Typography>
                                             {descriptor}
                                         </Typography>
@@ -141,7 +149,7 @@ const WorkSectionBase: React.FC = () => {
                         </div>
                         <div className={classes.chipContainer}>
                             <div>
-                                {job.skills.map((skill) => (
+                                {job.skills.sort(randomSort).map((skill) => (
                                     <Chip
                                         key={skill}
                                         label={skill}

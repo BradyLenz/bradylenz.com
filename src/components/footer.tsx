@@ -42,7 +42,11 @@ export const Footer: React.FC = () => {
                 <Grid item>
                     <div className={classes.iconContainer}>
                         <IconButton size='small' color='primary'>
-                            <Link>
+                            <Link
+                                href={globals.resume}
+                                target='_blank'
+                                rel='noopener'
+                            >
                                 <DescriptionOutlined />
                             </Link>
                         </IconButton>
