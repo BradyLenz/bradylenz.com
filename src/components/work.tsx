@@ -113,7 +113,7 @@ const WorkSectionBase: React.FC = () => {
                                     </Typography>
                                 </Hidden>
                                 <Hidden smUp>
-                                    <Typography variant={'h4'} color='textPrimary'>
+                                    <Typography variant={'h4'} color='textPrimary' align='center'>
                                         {job.title}{',\u00A0'}
                                     </Typography>
                                     <Typography
