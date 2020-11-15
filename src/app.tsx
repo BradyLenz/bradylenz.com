@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactGA from 'react-ga';
 
 import {
     AboutSection, 
@@ -9,7 +10,13 @@ import {
     Footer,
 } from './components';
 
-function App() {
+
+ReactGA.initialize('G-KLZ3TG9YWC', {
+    debug: process.env.NODE_ENV === 'development',
+});
+ReactGA.pageview(window.location.pathname);
+
+const App: React.FC = () => {
     return (
         <>
             <LandingSection scrollOffset={0} />
@@ -20,6 +27,6 @@ function App() {
             <Footer />
         </>
     );
-}
+};
 
 export default App;

@@ -1,6 +1,7 @@
-import { EducationSection } from "../models";
+import { EducationSection } from '../models';
 import * as uwmadison from '../assets/uwmadison.png';
 import * as gatech from '../assets/gatech.png';
+
 
 export const educationData: EducationSection = {
     header: 'Where I\'ve studied',
@@ -25,6 +26,6 @@ export const educationData: EducationSection = {
             },
             degreeText: 'B.S. in Computer Science and Mathematics',
             duration: 'September 2016 - December 2019',
-        }
-    ]
-}
+        },
+    ],
+};

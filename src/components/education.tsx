@@ -1,14 +1,17 @@
 import React from 'react';
+import ReactGA from 'react-ga';
 import { Container, createStyles, Grid, Link, makeStyles, Theme, Typography } from '@material-ui/core';
 
 import { educationData } from '../data';
 import { withFade, withScrolling } from './shared/hocs';
 import { useStyles as useSharedStyles } from './shared/styles';
+import { AnalyticsCategory, AnalyticsLabel } from '../models';
+
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         rowContainer: {
-            padding: '50px 0 0 0'
+            padding: '50px 0 0 0',
         },
         header: {
             marginBottom: '50px',
@@ -39,12 +42,20 @@ const useStyles = makeStyles((theme: Theme) =>
                 filter: 'grayscale(0%)',
             },
         },
-    })
+    }),
 );
 
 const EducationSectionBase: React.FC = () => {
     const classes = useStyles();
     const sharedClasses = useSharedStyles();
+
+    const onClickUniversityLink = (name: string) => {
+        ReactGA.event({
+            category: AnalyticsCategory.Link,
+            action: `Navigated to University: ${name}`,
+            label: AnalyticsLabel.Education,
+        });
+    };
 
     return (
         <Container maxWidth='lg' className={sharedClasses.section}>
@@ -58,7 +69,7 @@ const EducationSectionBase: React.FC = () => {
                     {educationData.header}
                 </Typography>
                 {educationData.universities.map((university, idx) => {
-                    const style: React.CSSProperties = idx > 0 ? { paddingTop: '100px' } : {}
+                    const style: React.CSSProperties = idx > 0 ? { paddingTop: '100px' } : {};
 
                     return (
                         <Grid
@@ -97,6 +108,7 @@ const EducationSectionBase: React.FC = () => {
                                     rel='noopener'
                                     variant='h4'
                                     color='secondary'
+                                    onClick={() => onClickUniversityLink(university.name)}
                                     gutterBottom
                                 >
                                     {university.name}
@@ -114,11 +126,11 @@ const EducationSectionBase: React.FC = () => {
                                 }
                             </Grid>
                         </Grid>
-                        );
+                    );
                 })}
             </div>
         </Container>
-    )
-}
+    );
+};
 
 export const EducationSection = withFade(withScrolling(EducationSectionBase));

@@ -1,9 +1,12 @@
 import React from 'react';
-import { Button, Container, createStyles, makeStyles, Theme, Typography } from "@material-ui/core"
+import ReactGA from 'react-ga';
+import { Button, Container, createStyles, makeStyles, Theme, Typography } from '@material-ui/core';
 import { DescriptionOutlined, GitHub } from '@material-ui/icons';
 
 import { globals, landingSectionData } from '../data';
 import { withFade, withScrolling } from './shared/hocs';
+import { AnalyticsCategory, AnalyticsLabel } from '../models';
+
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -18,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         buttonContainer: {
             width: '100%',
-            textAlign: 'center'
+            textAlign: 'center',
         },
         button: {
             margin: theme.spacing(2),
@@ -27,11 +30,27 @@ const useStyles = makeStyles((theme: Theme) =>
         gitHubIcon: {
             marginRight: '4px',
         },
-    })
+    }),
 );
 
 const LandingSectionBase: React.FC = () => {
     const classes = useStyles();
+
+    const onClickResume = () => {
+        ReactGA.event({
+            category: AnalyticsCategory.Link,
+            action: 'Navigated to Resume',
+            label: AnalyticsLabel.Landing,
+        });
+    };
+
+    const onClickGitHub = () => {
+        ReactGA.event({
+            category: AnalyticsCategory.Link,
+            action: 'Navigated to GitHub',
+            label: AnalyticsLabel.Landing,
+        });
+    };
 
     return (
         <Container maxWidth='lg' className={classes.root}>
@@ -67,6 +86,7 @@ const LandingSectionBase: React.FC = () => {
                         variant='contained'
                         color='primary'
                         size='large'
+                        onClick={onClickResume}
                         className={classes.button}
                     >
                         <DescriptionOutlined />
@@ -79,15 +99,16 @@ const LandingSectionBase: React.FC = () => {
                         variant='contained'
                         color='primary'
                         size='large'
+                        onClick={onClickGitHub}
                         className={classes.button}
                     >
                         <GitHub className={classes.gitHubIcon} />
-                        Github
+                        GitHub
                     </Button>
                 </div>
             </div>
         </Container>
-    )
-}
+    );
+};
 
 export const LandingSection = withFade(withScrolling(LandingSectionBase));

@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import ReactGA from 'react-ga';
 import { Container, createStyles, Link, makeStyles, Tab, Tabs, Theme, Typography, Hidden, Chip } from '@material-ui/core';
+import { KeyboardArrowRight } from '@material-ui/icons';
 
 import { workData } from '../data';
 import { withFade, withScrolling } from './shared/hocs';
 import { useStyles as useSharedStyles } from './shared/styles';
-import { KeyboardArrowRight } from '@material-ui/icons';
+import { AnalyticsCategory, AnalyticsLabel } from '../models';
+
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -25,7 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
             display: 'flex',
             flexWrap: 'wrap',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
         },
         centeredContentContainer: {
             paddingTop: '25px',
@@ -55,22 +58,35 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         chip: {
             margin: '4px',
-        }
-    })
+        },
+    }),
 );
 
-const randomSort = (a: any, b: any) => {
+const randomSort = () => {
     return 0.5 - Math.random();
-}
+};
 
 const WorkSectionBase: React.FC = () => {
     const sharedClasses = useSharedStyles();
     const classes = useStyles();
     const [tabValue, setTabValue] = useState(0);
     
-    const onTabChange = (_: React.ChangeEvent<{}>, newTab: number) => {
+    const onClickCompanyLink = (companyName: string) => {
+        ReactGA.event({
+            category: AnalyticsCategory.Link,
+            action: `Naviated to Company: ${companyName}`,
+            label: AnalyticsLabel.Work,
+        });
+    };
+
+    const onTabChange = (_: React.ChangeEvent<Record<string, unknown>>, newTab: number) => {
         setTabValue(newTab);
-    }
+        ReactGA.event({
+            category: AnalyticsCategory.Tab,
+            action: `Tabbed to ${workData.jobs[newTab].company}`,
+            label: AnalyticsLabel.Work,
+        });
+    };
 
     return (
         <Container maxWidth='md' className={sharedClasses.section}>
@@ -108,12 +124,13 @@ const WorkSectionBase: React.FC = () => {
                                         rel='noopener'
                                         variant={'h3'}
                                         color='primary'
+                                        onClick={() => onClickCompanyLink(job.company)}
                                     >
                                         {job.company}
                                     </Typography>
                                 </Hidden>
                                 <Hidden smUp>
-                                    <Typography variant={'h4'} color='textPrimary'>
+                                    <Typography variant={'h4'} color='textPrimary' align='center'>
                                         {job.title}{',\u00A0'}
                                     </Typography>
                                     <Typography
@@ -123,6 +140,7 @@ const WorkSectionBase: React.FC = () => {
                                         rel='noopener'
                                         variant={'h4'}
                                         color='primary'
+                                        onClick={() => onClickCompanyLink(job.company)}
                                     >
                                         {job.company}
                                     </Typography>
@@ -163,7 +181,7 @@ const WorkSectionBase: React.FC = () => {
                 ))}
             </div>
         </Container>
-    )
-}
+    );
+};
 
 export const WorkSection = withFade(withScrolling(WorkSectionBase));

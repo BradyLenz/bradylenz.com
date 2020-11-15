@@ -1,5 +1,6 @@
 import { Image } from './elements';
 
+
 interface Section {
     header: string;
 }

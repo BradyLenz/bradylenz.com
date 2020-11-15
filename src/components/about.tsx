@@ -5,13 +5,14 @@ import { aboutMeData } from '../data';
 import { withFade, withScrolling } from './shared/hocs';
 import { useStyles as useSharedStyles } from './shared/styles';
 
+
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         header: {
             marginBottom: '50px',
             [theme.breakpoints.down('sm')]: {
                 marginBottom: '10px',
-            }
+            },
         },
         paragraph: {
             margin: '1em 0',
@@ -29,7 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
                 filter: 'grayscale(0%)',
             },
         },
-    })
+    }),
 );
 
 const AboutSectionBase: React.FC = () => {
@@ -75,7 +76,7 @@ const AboutSectionBase: React.FC = () => {
                 </Grid>
             </div>
         </Container>
-    )
-}
+    );
+};
 
 export const AboutSection = withFade(withScrolling(AboutSectionBase));

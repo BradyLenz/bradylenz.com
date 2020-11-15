@@ -1,4 +1,5 @@
-import { Globals } from "../models";
+import { Globals } from '../models';
+
 
 export const globals: Globals = {
     name: 'Brady Lenz',
@@ -7,4 +8,4 @@ export const globals: Globals = {
     email: 'bradylenz98@gmail.com',
     url: 'https://bradylenz.com',
     resume: 'resume.pdf',
-}
+};

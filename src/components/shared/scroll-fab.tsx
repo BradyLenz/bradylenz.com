@@ -2,6 +2,7 @@ import React from 'react';
 import { createStyles, Fab, Hidden, makeStyles } from '@material-ui/core';
 import { KeyboardArrowDown, KeyboardArrowUp } from '@material-ui/icons';
 
+
 export interface Props {
     direction: 'up' | 'down';
     onClick: () => void;
@@ -18,8 +19,8 @@ const useStyles = makeStyles(() =>
             marginRight: 'auto',
             bottom: (props.direction === 'down') ? '10vh' : undefined,
             top: (props.direction === 'up') ? '10vh' : undefined,
-        })
-    })
+        }),
+    }),
 );
 
 
@@ -28,7 +29,7 @@ export const ScrollFab: React.FC<Props> = (props: Props) => {
 
     const onClick = () => {
         props.onClick();
-    }
+    };
 
     return (
         <Hidden smDown={props.hideScrollFabSmDown}>
@@ -45,4 +46,4 @@ export const ScrollFab: React.FC<Props> = (props: Props) => {
             </Fab>
         </Hidden>
     );
-}
+};
