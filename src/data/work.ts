@@ -1,4 +1,4 @@
-import { WorkSection } from "../models";
+import { WorkSection } from '../models';
 
 export const workData: WorkSection = {
     header: 'Places I\'ve  worked',
@@ -90,4 +90,4 @@ export const workData: WorkSection = {
             ],
         },
     ],
-}
+};

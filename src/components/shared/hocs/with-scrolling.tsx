@@ -8,12 +8,12 @@ const useStyles = makeStyles(() =>
         root: {
             position: 'relative',
         },
-    })
+    }),
 );
 
 type Props = Pick<ScrollFabProps, 'hideScrollFabSmDown'>;
 
-export const withScrolling = <T extends {}>(Component: React.FC<T & Props>) => {
+export const withScrolling = <T extends Record<string, unknown>>(Component: React.FC<T & Props>) => {
     return (props: T & Props) => {
         const classes = useStyles();
         const scrollRef = useRef<HTMLDivElement>(null);
@@ -22,7 +22,7 @@ export const withScrolling = <T extends {}>(Component: React.FC<T & Props>) => {
             if (scrollRef && scrollRef.current) {
                 scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'start'});
             }
-        }
+        };
 
         return (
             <div className={classes.root}>
@@ -31,5 +31,5 @@ export const withScrolling = <T extends {}>(Component: React.FC<T & Props>) => {
                 <div ref={scrollRef} />
             </div>
         );
-    }
-}
+    };
+};

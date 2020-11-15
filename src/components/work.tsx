@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
             display: 'flex',
             flexWrap: 'wrap',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
         },
         centeredContentContainer: {
             paddingTop: '25px',
@@ -55,22 +55,22 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         chip: {
             margin: '4px',
-        }
-    })
+        },
+    }),
 );
 
-const randomSort = (a: any, b: any) => {
+const randomSort = () => {
     return 0.5 - Math.random();
-}
+};
 
 const WorkSectionBase: React.FC = () => {
     const sharedClasses = useSharedStyles();
     const classes = useStyles();
     const [tabValue, setTabValue] = useState(0);
     
-    const onTabChange = (_: React.ChangeEvent<{}>, newTab: number) => {
+    const onTabChange = (_: React.ChangeEvent<Record<string, unknown>>, newTab: number) => {
         setTabValue(newTab);
-    }
+    };
 
     return (
         <Container maxWidth='md' className={sharedClasses.section}>
@@ -163,7 +163,7 @@ const WorkSectionBase: React.FC = () => {
                 ))}
             </div>
         </Container>
-    )
-}
+    );
+};
 
 export const WorkSection = withFade(withScrolling(WorkSectionBase));

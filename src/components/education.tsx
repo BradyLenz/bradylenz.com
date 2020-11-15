@@ -8,7 +8,7 @@ import { useStyles as useSharedStyles } from './shared/styles';
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         rowContainer: {
-            padding: '50px 0 0 0'
+            padding: '50px 0 0 0',
         },
         header: {
             marginBottom: '50px',
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) =>
                 filter: 'grayscale(0%)',
             },
         },
-    })
+    }),
 );
 
 const EducationSectionBase: React.FC = () => {
@@ -58,7 +58,7 @@ const EducationSectionBase: React.FC = () => {
                     {educationData.header}
                 </Typography>
                 {educationData.universities.map((university, idx) => {
-                    const style: React.CSSProperties = idx > 0 ? { paddingTop: '100px' } : {}
+                    const style: React.CSSProperties = idx > 0 ? { paddingTop: '100px' } : {};
 
                     return (
                         <Grid
@@ -114,11 +114,11 @@ const EducationSectionBase: React.FC = () => {
                                 }
                             </Grid>
                         </Grid>
-                        );
+                    );
                 })}
             </div>
         </Container>
-    )
-}
+    );
+};
 
 export const EducationSection = withFade(withScrolling(EducationSectionBase));

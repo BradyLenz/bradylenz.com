@@ -13,7 +13,7 @@ const useStyles = makeStyles(() =>
         },
         gridContainer: {
             width: '100%',
-            height: '100%'
+            height: '100%',
         },
         iconContainer: {
             textAlign: 'center',
@@ -24,8 +24,8 @@ const useStyles = makeStyles(() =>
         },
         textRight: {
             display: 'inline-block',
-        }
-    })
+        },
+    }),
 );
 
 export const Footer: React.FC = () => {
@@ -94,4 +94,4 @@ export const Footer: React.FC = () => {
             </Grid>
         </div>
     );
-}
+};

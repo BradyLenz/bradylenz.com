@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Container, createStyles, makeStyles, Theme, Typography } from "@material-ui/core"
+import { Button, Container, createStyles, makeStyles, Theme, Typography } from '@material-ui/core';
 import { DescriptionOutlined, GitHub } from '@material-ui/icons';
 
 import { globals, landingSectionData } from '../data';
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         buttonContainer: {
             width: '100%',
-            textAlign: 'center'
+            textAlign: 'center',
         },
         button: {
             margin: theme.spacing(2),
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
         gitHubIcon: {
             marginRight: '4px',
         },
-    })
+    }),
 );
 
 const LandingSectionBase: React.FC = () => {
@@ -87,7 +87,7 @@ const LandingSectionBase: React.FC = () => {
                 </div>
             </div>
         </Container>
-    )
-}
+    );
+};
 
 export const LandingSection = withFade(withScrolling(LandingSectionBase));

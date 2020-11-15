@@ -16,13 +16,13 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         buttonContainer: {
             width: '100%',
-            textAlign: 'center'
+            textAlign: 'center',
         },
         button: {
             margin: theme.spacing(2),
             width: '100px',
         },
-    })
+    }),
 );
 
 const ContactSectionBase: React.FC = () => {
@@ -73,7 +73,7 @@ const ContactSectionBase: React.FC = () => {
                 </div>
             </div>
         </Container>
-    )
-}
+    );
+};
 
 export const ContactSection = withFade(ContactSectionBase);
