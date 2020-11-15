@@ -1,9 +1,12 @@
 import React from 'react';
+import ReactGA from 'react-ga';
 import { Button, Container, createStyles, makeStyles, Theme, Typography } from '@material-ui/core';
 import { DescriptionOutlined, GitHub } from '@material-ui/icons';
 
 import { globals, landingSectionData } from '../data';
 import { withFade, withScrolling } from './shared/hocs';
+import { AnalyticsCategory, AnalyticsLabel } from '../models';
+
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -32,6 +35,22 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const LandingSectionBase: React.FC = () => {
     const classes = useStyles();
+
+    const onClickResume = () => {
+        ReactGA.event({
+            category: AnalyticsCategory.Link,
+            action: 'Navigated to Resume',
+            label: AnalyticsLabel.Landing,
+        });
+    };
+
+    const onClickGitHub = () => {
+        ReactGA.event({
+            category: AnalyticsCategory.Link,
+            action: 'Navigated to GitHub',
+            label: AnalyticsLabel.Landing,
+        });
+    };
 
     return (
         <Container maxWidth='lg' className={classes.root}>
@@ -67,6 +86,7 @@ const LandingSectionBase: React.FC = () => {
                         variant='contained'
                         color='primary'
                         size='large'
+                        onClick={onClickResume}
                         className={classes.button}
                     >
                         <DescriptionOutlined />
@@ -79,10 +99,11 @@ const LandingSectionBase: React.FC = () => {
                         variant='contained'
                         color='primary'
                         size='large'
+                        onClick={onClickGitHub}
                         className={classes.button}
                     >
                         <GitHub className={classes.gitHubIcon} />
-                        Github
+                        GitHub
                     </Button>
                 </div>
             </div>

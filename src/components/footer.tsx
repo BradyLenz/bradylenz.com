@@ -1,8 +1,11 @@
 import React from 'react';
+import ReactGA from 'react-ga';
 import { createStyles, Grid, IconButton, Link, makeStyles, Typography } from '@material-ui/core';
 import { DescriptionOutlined, GitHub, LinkedIn, MailOutline } from '@material-ui/icons';
 
 import { globals } from '../data';
+import { AnalyticsCategory, AnalyticsLabel } from '../models';
+
 
 const useStyles = makeStyles(() =>
     createStyles({
@@ -31,6 +34,22 @@ const useStyles = makeStyles(() =>
 export const Footer: React.FC = () => {
     const classes = useStyles();
     
+    const onClickLink = (name: string) => {
+        ReactGA.event({
+            category: AnalyticsCategory.Link,
+            action: `Navigated to ${name}`,
+            label: AnalyticsLabel.Footer,
+        });
+    };
+
+    const onClickEmail = () => {
+        ReactGA.event({
+            category: AnalyticsCategory.Email,
+            action: 'Started an Email',
+            label: AnalyticsLabel.Footer,
+        });
+    };
+
     return (
         <div className={classes.root}>
             <Grid
@@ -46,6 +65,7 @@ export const Footer: React.FC = () => {
                                 href={globals.resume}
                                 target='_blank'
                                 rel='noopener'
+                                onClick={() => onClickLink('Resume')}
                             >
                                 <DescriptionOutlined />
                             </Link>
@@ -55,6 +75,7 @@ export const Footer: React.FC = () => {
                                 href={globals.githubUrl}
                                 target='_blank'
                                 rel='noopener'
+                                onClick={() => onClickLink('GitHub')}
                             >
                                 <GitHub />
                             </Link>
@@ -64,12 +85,13 @@ export const Footer: React.FC = () => {
                                 href={globals.linkedinUrl}
                                 target='_blank'
                                 rel='noopener'
+                                onClick={() => onClickLink('LinkedIn')}
                             >
                                 <LinkedIn />
                             </Link>
                         </IconButton>
                         <IconButton size='small' color='primary'>
-                            <Link href={`mailto:${globals.email}`}>
+                            <Link href={`mailto:${globals.email}`} onClick={onClickEmail}>
                                 <MailOutline />
                             </Link>
                         </IconButton>
@@ -84,9 +106,12 @@ export const Footer: React.FC = () => {
                         variant='body1'
                         align='center'
                         component={Link}
+                        target='_blank'
+                        rel='noopener'
                         href={globals.url}
                         color='primary'
                         className={classes.textRight}
+                        onClick={() => onClickLink('bradylenz.com')}
                     >
                         {globals.name}
                     </Typography>

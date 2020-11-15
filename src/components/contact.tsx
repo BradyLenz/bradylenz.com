@@ -1,10 +1,13 @@
 import React from 'react';
+import ReactGA from 'react-ga';
 import { Button, Container, createStyles, makeStyles, Theme, Typography } from '@material-ui/core';
 import { LinkedIn, MailOutline } from '@material-ui/icons';
 
 import { contactData, globals } from '../data';
 import { useStyles as useSharedStyles } from './shared/styles';
 import { withFade } from './shared';
+import { AnalyticsCategory, AnalyticsLabel } from '../models';
+
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -28,6 +31,22 @@ const useStyles = makeStyles((theme: Theme) =>
 const ContactSectionBase: React.FC = () => {
     const classes = useStyles();
     const sharedClasses = useSharedStyles();
+
+    const onClickLinkedIn = () => {
+        ReactGA.event({
+            category: AnalyticsCategory.Link,
+            action: 'Navigated to LinkedIn',
+            label: AnalyticsLabel.Contact,
+        });
+    };
+
+    const onClickEmail = () => {
+        ReactGA.event({
+            category: AnalyticsCategory.Email,
+            action: 'Started an Email',
+            label: AnalyticsLabel.Contact,
+        });
+    };
 
     return (
         <Container maxWidth='sm' className={classes.root}>
@@ -55,6 +74,7 @@ const ContactSectionBase: React.FC = () => {
                         variant='contained'
                         color='primary'
                         size='large'
+                        onClick={onClickLinkedIn}
                         className={classes.button}
                     >
                         <LinkedIn />
@@ -65,6 +85,7 @@ const ContactSectionBase: React.FC = () => {
                         variant='contained'
                         color='primary'
                         size='large'
+                        onClick={onClickEmail}
                         className={classes.button}
                     >
                         <MailOutline />

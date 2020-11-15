@@ -3,6 +3,7 @@ import { createStyles, makeStyles } from '@material-ui/core';
 
 import { ScrollFab, Props as ScrollFabProps } from '../scroll-fab';
 
+
 const useStyles = makeStyles(() =>
     createStyles({
         root: {

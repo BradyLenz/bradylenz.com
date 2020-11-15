@@ -5,6 +5,7 @@ import { aboutMeData } from '../data';
 import { withFade, withScrolling } from './shared/hocs';
 import { useStyles as useSharedStyles } from './shared/styles';
 
+
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         header: {

@@ -6,6 +6,7 @@ import App from './app';
 import * as serviceWorker from './serviceWorker';
 import { theme } from './theme';
 
+
 ReactDOM.render(
     <React.StrictMode>
         <ThemeProvider theme={theme}>

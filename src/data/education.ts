@@ -2,6 +2,7 @@ import { EducationSection } from '../models';
 import * as uwmadison from '../assets/uwmadison.png';
 import * as gatech from '../assets/gatech.png';
 
+
 export const educationData: EducationSection = {
     header: 'Where I\'ve studied',
     universities: [

@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import ReactGA from 'react-ga';
 import { Container, createStyles, Link, makeStyles, Tab, Tabs, Theme, Typography, Hidden, Chip } from '@material-ui/core';
+import { KeyboardArrowRight } from '@material-ui/icons';
 
 import { workData } from '../data';
 import { withFade, withScrolling } from './shared/hocs';
 import { useStyles as useSharedStyles } from './shared/styles';
-import { KeyboardArrowRight } from '@material-ui/icons';
+import { AnalyticsCategory, AnalyticsLabel } from '../models';
+
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -68,8 +71,21 @@ const WorkSectionBase: React.FC = () => {
     const classes = useStyles();
     const [tabValue, setTabValue] = useState(0);
     
+    const onClickCompanyLink = (companyName: string) => {
+        ReactGA.event({
+            category: AnalyticsCategory.Link,
+            action: `Naviated to Company: ${companyName}`,
+            label: AnalyticsLabel.Work,
+        });
+    };
+
     const onTabChange = (_: React.ChangeEvent<Record<string, unknown>>, newTab: number) => {
         setTabValue(newTab);
+        ReactGA.event({
+            category: AnalyticsCategory.Tab,
+            action: `Tabbed to ${workData.jobs[newTab].company}`,
+            label: AnalyticsLabel.Work,
+        });
     };
 
     return (
@@ -108,6 +124,7 @@ const WorkSectionBase: React.FC = () => {
                                         rel='noopener'
                                         variant={'h3'}
                                         color='primary'
+                                        onClick={() => onClickCompanyLink(job.company)}
                                     >
                                         {job.company}
                                     </Typography>
@@ -123,6 +140,7 @@ const WorkSectionBase: React.FC = () => {
                                         rel='noopener'
                                         variant={'h4'}
                                         color='primary'
+                                        onClick={() => onClickCompanyLink(job.company)}
                                     >
                                         {job.company}
                                     </Typography>

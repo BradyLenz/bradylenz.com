@@ -2,6 +2,7 @@ import React from 'react';
 import { createStyles, Fab, Hidden, makeStyles } from '@material-ui/core';
 import { KeyboardArrowDown, KeyboardArrowUp } from '@material-ui/icons';
 
+
 export interface Props {
     direction: 'up' | 'down';
     onClick: () => void;
