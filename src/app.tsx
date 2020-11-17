@@ -11,7 +11,7 @@ import {
 } from './components';
 
 
-ReactGA.initialize('G-KLZ3TG9YWC', {
+ReactGA.initialize('G-QFLTG6VF4L', {
     debug: process.env.NODE_ENV === 'development',
 });
 ReactGA.pageview(window.location.pathname);

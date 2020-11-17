@@ -60,38 +60,35 @@ export const Footer: React.FC = () => {
             >
                 <Grid item>
                     <div className={classes.iconContainer}>
-                        <IconButton size='small' color='primary'>
-                            <Link
+                        <IconButton size='small' color='primary' onClick={() => onClickLink('Resume')}>
+                            <Link 
                                 href={globals.resume}
                                 target='_blank'
                                 rel='noopener'
-                                onClick={() => onClickLink('Resume')}
                             >
                                 <DescriptionOutlined />
                             </Link>
                         </IconButton>
-                        <IconButton size='small' color='primary'>
+                        <IconButton size='small' color='primary' onClick={() => onClickLink('GitHub')}>
                             <Link
                                 href={globals.githubUrl}
                                 target='_blank'
                                 rel='noopener'
-                                onClick={() => onClickLink('GitHub')}
                             >
                                 <GitHub />
                             </Link>
                         </IconButton>
-                        <IconButton size='small' color='primary'>
+                        <IconButton size='small' color='primary' onClick={() => onClickLink('LinkedIn')}>
                             <Link
                                 href={globals.linkedinUrl}
                                 target='_blank'
                                 rel='noopener'
-                                onClick={() => onClickLink('LinkedIn')}
                             >
                                 <LinkedIn />
                             </Link>
                         </IconButton>
-                        <IconButton size='small' color='primary'>
-                            <Link href={`mailto:${globals.email}`} onClick={onClickEmail}>
+                        <IconButton size='small' color='primary' onClick={onClickEmail}>
+                            <Link href={`mailto:${globals.email}`}>
                                 <MailOutline />
                             </Link>
                         </IconButton>
