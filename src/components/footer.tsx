@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactGA from 'react-ga';
 import { createStyles, Grid, IconButton, Link, makeStyles, Typography } from '@material-ui/core';
 import { DescriptionOutlined, GitHub, LinkedIn, MailOutline } from '@material-ui/icons';
 
@@ -33,22 +32,6 @@ const useStyles = makeStyles(() =>
 
 export const Footer: React.FC = () => {
     const classes = useStyles();
-    
-    const onClickLink = (name: string) => {
-        ReactGA.event({
-            category: AnalyticsCategory.Link,
-            action: `Navigated to ${name}`,
-            label: AnalyticsLabel.Footer,
-        });
-    };
-
-    const onClickEmail = () => {
-        ReactGA.event({
-            category: AnalyticsCategory.Email,
-            action: 'Started an Email',
-            label: AnalyticsLabel.Footer,
-        });
-    };
 
     return (
         <div className={classes.root}>
@@ -60,7 +43,7 @@ export const Footer: React.FC = () => {
             >
                 <Grid item>
                     <div className={classes.iconContainer}>
-                        <IconButton size='small' color='primary' onClick={() => onClickLink('Resume')}>
+                        <IconButton size='small' color='primary'>
                             <Link 
                                 href={globals.resume}
                                 target='_blank'
@@ -69,7 +52,7 @@ export const Footer: React.FC = () => {
                                 <DescriptionOutlined />
                             </Link>
                         </IconButton>
-                        <IconButton size='small' color='primary' onClick={() => onClickLink('GitHub')}>
+                        <IconButton size='small' color='primary'>
                             <Link
                                 href={globals.githubUrl}
                                 target='_blank'
@@ -78,7 +61,7 @@ export const Footer: React.FC = () => {
                                 <GitHub />
                             </Link>
                         </IconButton>
-                        <IconButton size='small' color='primary' onClick={() => onClickLink('LinkedIn')}>
+                        <IconButton size='small' color='primary'>
                             <Link
                                 href={globals.linkedinUrl}
                                 target='_blank'
@@ -87,7 +70,7 @@ export const Footer: React.FC = () => {
                                 <LinkedIn />
                             </Link>
                         </IconButton>
-                        <IconButton size='small' color='primary' onClick={onClickEmail}>
+                        <IconButton size='small' color='primary'>
                             <Link href={`mailto:${globals.email}`}>
                                 <MailOutline />
                             </Link>
@@ -108,7 +91,6 @@ export const Footer: React.FC = () => {
                         href={globals.url}
                         color='primary'
                         className={classes.textRight}
-                        onClick={() => onClickLink('bradylenz.com')}
                     >
                         {globals.name}
                     </Typography>

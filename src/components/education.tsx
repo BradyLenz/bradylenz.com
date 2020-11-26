@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactGA from 'react-ga';
 import { Container, createStyles, Grid, Link, makeStyles, Theme, Typography } from '@material-ui/core';
 
 import { educationData } from '../data';
@@ -48,14 +47,6 @@ const useStyles = makeStyles((theme: Theme) =>
 const EducationSectionBase: React.FC = () => {
     const classes = useStyles();
     const sharedClasses = useSharedStyles();
-
-    const onClickUniversityLink = (name: string) => {
-        ReactGA.event({
-            category: AnalyticsCategory.Link,
-            action: `Navigated to University: ${name}`,
-            label: AnalyticsLabel.Education,
-        });
-    };
 
     return (
         <Container maxWidth='lg' className={sharedClasses.section}>
@@ -108,7 +99,6 @@ const EducationSectionBase: React.FC = () => {
                                     rel='noopener'
                                     variant='h4'
                                     color='secondary'
-                                    onClick={() => onClickUniversityLink(university.name)}
                                     gutterBottom
                                 >
                                     {university.name}

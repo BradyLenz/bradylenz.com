@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactGA from 'react-ga';
 
 import {
     AboutSection, 
@@ -10,11 +9,6 @@ import {
     Footer,
 } from './components';
 
-
-ReactGA.initialize('G-QFLTG6VF4L', {
-    debug: process.env.NODE_ENV === 'development',
-});
-ReactGA.pageview(window.location.pathname);
 
 const App: React.FC = () => {
     return (
