@@ -3,7 +3,6 @@ import { createStyles, Grid, IconButton, Link, makeStyles, Typography } from '@m
 import { DescriptionOutlined, GitHub, LinkedIn, MailOutline } from '@material-ui/icons';
 
 import { globals } from '../data';
-import { AnalyticsCategory, AnalyticsLabel } from '../models';
 
 
 const useStyles = makeStyles(() =>

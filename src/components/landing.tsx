@@ -4,7 +4,6 @@ import { DescriptionOutlined, GitHub } from '@material-ui/icons';
 
 import { globals, landingSectionData } from '../data';
 import { withFade, withScrolling } from './shared/hocs';
-import { AnalyticsCategory, AnalyticsLabel } from '../models';
 
 
 const useStyles = makeStyles((theme: Theme) =>

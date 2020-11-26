@@ -5,7 +5,6 @@ import { KeyboardArrowRight } from '@material-ui/icons';
 import { workData } from '../data';
 import { withFade, withScrolling } from './shared/hocs';
 import { useStyles as useSharedStyles } from './shared/styles';
-import { AnalyticsCategory, AnalyticsLabel } from '../models';
 
 
 const useStyles = makeStyles((theme: Theme) =>

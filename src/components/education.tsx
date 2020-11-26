@@ -4,7 +4,6 @@ import { Container, createStyles, Grid, Link, makeStyles, Theme, Typography } fr
 import { educationData } from '../data';
 import { withFade, withScrolling } from './shared/hocs';
 import { useStyles as useSharedStyles } from './shared/styles';
-import { AnalyticsCategory, AnalyticsLabel } from '../models';
 
 
 const useStyles = makeStyles((theme: Theme) =>

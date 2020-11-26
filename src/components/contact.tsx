@@ -5,7 +5,6 @@ import { LinkedIn, MailOutline } from '@material-ui/icons';
 import { contactData, globals } from '../data';
 import { useStyles as useSharedStyles } from './shared/styles';
 import { withFade } from './shared';
-import { AnalyticsCategory, AnalyticsLabel } from '../models';
 
 
 const useStyles = makeStyles((theme: Theme) =>
